@@ -1,0 +1,9 @@
+{
+  "name": "sir-rolins-momentum-modules",
+  "version": "0.1.0",
+  "title": "Momentum Modules",
+  "author": "Sir Rolin",
+  "factorio_version": "2.0",
+  "dependencies": ["base >= 2.0"],
+  "description": "Adds momentum-based module systems."
+}
