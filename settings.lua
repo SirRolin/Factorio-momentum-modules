@@ -102,6 +102,16 @@ function concatItem(base, items)
     return base
 end
 
+-- Only appends extras (items exclusive to Space Age planets, e.g. tungsten-carbide,
+-- spoilage, biter-egg, superconductor) when Space Age is active, since those items
+-- don't exist without it.
+function addSpaceAgeExtras(base, extras)
+    if mods["space-age"] then
+        return concatItem(base, extras)
+    end
+    return base
+end
+
 local settingsPackage = {
     {
         type = "string-setting",
@@ -174,31 +184,31 @@ end
 
 addSRSettings(settingsPackage, "turbo", 1, 1, defaultsOn1())
 addSRSettings(settingsPackage, "turbo", 2, 1, concatItem(defaultsOn2(), {{ item = "sr-mom-turbo-1-0", amount = 4 }}))
-addSRSettings(settingsPackage, "turbo", 3, 1, concatItem(defaultsOn2(), {{ item = "sr-mom-turbo-2-0", amount = 4 }, { item = "tungsten-carbide", amount = 1 }}))
+addSRSettings(settingsPackage, "turbo", 3, 1, addSpaceAgeExtras(concatItem(defaultsOn2(), {{ item = "sr-mom-turbo-2-0", amount = 4 }}), {{ item = "tungsten-carbide", amount = 1 }}))
 
 addSRSettings(settingsPackage, "clean", 1, 1, defaultsOn1())
 addSRSettings(settingsPackage, "clean", 2, 1, concatItem(defaultsOn2(), {{ item = "sr-mom-clean-1-0", amount = 4 }}))
 addSRSettings(settingsPackage, "clean", 3, 1, concatItem(defaultsOn2(), {{ item = "sr-mom-clean-2-0", amount = 4 }, { item = "sulfur", amount = 5 }}))
 
 addSRSettings(settingsPackage, "heat-up", 1, 1, defaultsOn1())
-addSRSettings(settingsPackage, "heat-up", 2, 1, defaultsOn2(), {{ item = "sr-mom-heat-up-1-0", amount = 4 }})
-addSRSettings(settingsPackage, "heat-up", 3, 1, concatItem(defaultsOn2(), {{ item = "sr-mom-heat-up-2-0", amount = 4 }, { item = "spoilage", amount = 5 }, { item = "biter-egg", amount = 1 }}))
+addSRSettings(settingsPackage, "heat-up", 2, 1, concatItem(defaultsOn2(), {{ item = "sr-mom-heat-up-1-0", amount = 4 }}))
+addSRSettings(settingsPackage, "heat-up", 3, 1, addSpaceAgeExtras(concatItem(defaultsOn2(), {{ item = "sr-mom-heat-up-2-0", amount = 4 }}), {{ item = "spoilage", amount = 5 }, { item = "biter-egg", amount = 1 }}))
 
 addSRSettings(settingsPackage, "productivity-speed", 1, 1, defaultsOn1())
-addSRSettings(settingsPackage, "productivity-speed", 2, 1, defaultsOn2(), {{ item = "sr-mom-productivity-speed-1-0", amount = 4 }})
-addSRSettings(settingsPackage, "productivity-speed", 3, 2, concatItem(defaultsOn2(), {{ item = "sr-mom-productivity-speed-2-0", amount = 4 }, { item = "biter-egg", amount = 1 }, { item = "spoilage", amount = 5 }}))
+addSRSettings(settingsPackage, "productivity-speed", 2, 1, concatItem(defaultsOn2(), {{ item = "sr-mom-productivity-speed-1-0", amount = 4 }}))
+addSRSettings(settingsPackage, "productivity-speed", 3, mods["space-age"] and 2 or 1, addSpaceAgeExtras(concatItem(defaultsOn2(), {{ item = "sr-mom-productivity-speed-2-0", amount = 4 }}), {{ item = "biter-egg", amount = 1 }, { item = "spoilage", amount = 5 }}))
 
 addSRSettings(settingsPackage, "efficiency-speed", 1, 1, defaultsOn1())
-addSRSettings(settingsPackage, "efficiency-speed", 2, 1, defaultsOn2(), {{ item = "sr-mom-efficiency-speed-1-0", amount = 4 }})
-addSRSettings(settingsPackage, "efficiency-speed", 3, 2, concatItem(defaultsOn2(), {{ item = "sr-mom-efficiency-speed-2-0", amount = 4 }, { item = "spoilage", amount = 5 }, { item = "tungsten-carbide", amount = 1 }}))
+addSRSettings(settingsPackage, "efficiency-speed", 2, 1, concatItem(defaultsOn2(), {{ item = "sr-mom-efficiency-speed-1-0", amount = 4 }}))
+addSRSettings(settingsPackage, "efficiency-speed", 3, mods["space-age"] and 2 or 1, addSpaceAgeExtras(concatItem(defaultsOn2(), {{ item = "sr-mom-efficiency-speed-2-0", amount = 4 }}), {{ item = "spoilage", amount = 5 }, { item = "tungsten-carbide", amount = 1 }}))
 
 addSRSettings(settingsPackage, "quality-speed", 1, 1, defaultsOn1())
-addSRSettings(settingsPackage, "quality-speed", 2, 1, defaultsOn2(), {{ item = "sr-mom-quality-speed-1-0", amount = 4 }})
-addSRSettings(settingsPackage, "quality-speed", 3, 2, concatItem(defaultsOn2(), {{ item = "sr-mom-quality-speed-2-0", amount = 4 }, { item = "superconductor", amount = 1 }, { item = "tungsten-carbide", amount = 1 }}))
+addSRSettings(settingsPackage, "quality-speed", 2, 1, concatItem(defaultsOn2(), {{ item = "sr-mom-quality-speed-1-0", amount = 4 }}))
+addSRSettings(settingsPackage, "quality-speed", 3, 2, addSpaceAgeExtras(concatItem(defaultsOn2(), {{ item = "sr-mom-quality-speed-2-0", amount = 4 }}), {{ item = "superconductor", amount = 1 }, { item = "tungsten-carbide", amount = 1 }}))
 
 addSRSettings(settingsPackage, "quality-productivity", 1, 1, defaultsOn1())
-addSRSettings(settingsPackage, "quality-productivity", 2, 1, defaultsOn2(), {{ item = "sr-mom-quality-productivity-1-0", amount = 4 }})
-addSRSettings(settingsPackage, "quality-productivity", 3, 2, concatItem(defaultsOn2(), {{ item = "sr-mom-quality-productivity-2-0", amount = 4 }, { item = "superconductor", amount = 1 }, { item = "biter-egg", amount = 1 }}))
+addSRSettings(settingsPackage, "quality-productivity", 2, 1, concatItem(defaultsOn2(), {{ item = "sr-mom-quality-productivity-1-0", amount = 4 }}))
+addSRSettings(settingsPackage, "quality-productivity", 3, mods["space-age"] and 2 or 1, addSpaceAgeExtras(concatItem(defaultsOn2(), {{ item = "sr-mom-quality-productivity-2-0", amount = 4 }}), {{ item = "superconductor", amount = 1 }, { item = "biter-egg", amount = 1 }}))
 
 addSRSettings(settingsPackage, "catalyst", 1, 1, defaultsOn1())
 addSRSettings(settingsPackage, "catalyst", 2, 1, concatItem(defaultsOn2(), {{ item = "sr-mom-catalyst-1-0", amount = 4 }}))
