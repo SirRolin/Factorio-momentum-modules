@@ -1,0 +1,44 @@
+{
+  "item":
+  [
+    ["sr-mom-catalyst-1-0", "sr-mom-productivity-catalytic-1-0"],
+    ["sr-mom-catalyst-1-1", "sr-mom-productivity-catalytic-1-1"],
+    ["sr-mom-catalyst-1-2", "sr-mom-productivity-catalytic-1-2"],
+    ["sr-mom-catalyst-1-3", "sr-mom-productivity-catalytic-1-3"],
+    ["sr-mom-catalyst-1-4", "sr-mom-productivity-catalytic-1-4"],
+    ["sr-mom-catalyst-1-5", "sr-mom-productivity-catalytic-1-5"],
+    ["sr-mom-catalyst-1-6", "sr-mom-productivity-catalytic-1-6"],
+    ["sr-mom-catalyst-1-7", "sr-mom-productivity-catalytic-1-7"],
+    ["sr-mom-catalyst-1-8", "sr-mom-productivity-catalytic-1-8"],
+    ["sr-mom-catalyst-1-9", "sr-mom-productivity-catalytic-1-9"],
+    ["sr-mom-catalyst-1-10", "sr-mom-productivity-catalytic-1-10"],
+    ["sr-mom-catalyst-2-0", "sr-mom-productivity-catalytic-2-0"],
+    ["sr-mom-catalyst-2-1", "sr-mom-productivity-catalytic-2-1"],
+    ["sr-mom-catalyst-2-2", "sr-mom-productivity-catalytic-2-2"],
+    ["sr-mom-catalyst-2-3", "sr-mom-productivity-catalytic-2-3"],
+    ["sr-mom-catalyst-2-4", "sr-mom-productivity-catalytic-2-4"],
+    ["sr-mom-catalyst-2-5", "sr-mom-productivity-catalytic-2-5"],
+    ["sr-mom-catalyst-2-6", "sr-mom-productivity-catalytic-2-6"],
+    ["sr-mom-catalyst-2-7", "sr-mom-productivity-catalytic-2-7"],
+    ["sr-mom-catalyst-2-8", "sr-mom-productivity-catalytic-2-8"],
+    ["sr-mom-catalyst-2-9", "sr-mom-productivity-catalytic-2-9"],
+    ["sr-mom-catalyst-2-10", "sr-mom-productivity-catalytic-2-10"],
+    ["sr-mom-catalyst-3-0", "sr-mom-productivity-catalytic-3-0"],
+    ["sr-mom-catalyst-3-1", "sr-mom-productivity-catalytic-3-1"],
+    ["sr-mom-catalyst-3-2", "sr-mom-productivity-catalytic-3-2"],
+    ["sr-mom-catalyst-3-3", "sr-mom-productivity-catalytic-3-3"],
+    ["sr-mom-catalyst-3-4", "sr-mom-productivity-catalytic-3-4"],
+    ["sr-mom-catalyst-3-5", "sr-mom-productivity-catalytic-3-5"],
+    ["sr-mom-catalyst-3-6", "sr-mom-productivity-catalytic-3-6"],
+    ["sr-mom-catalyst-3-7", "sr-mom-productivity-catalytic-3-7"],
+    ["sr-mom-catalyst-3-8", "sr-mom-productivity-catalytic-3-8"],
+    ["sr-mom-catalyst-3-9", "sr-mom-productivity-catalytic-3-9"],
+    ["sr-mom-catalyst-3-10", "sr-mom-productivity-catalytic-3-10"]
+  ],
+  "recipe":
+  [
+    ["sr-mom-catalyst-1-0", "sr-mom-productivity-catalytic-1-0"],
+    ["sr-mom-catalyst-2-0", "sr-mom-productivity-catalytic-2-0"],
+    ["sr-mom-catalyst-3-0", "sr-mom-productivity-catalytic-3-0"]
+  ]
+}

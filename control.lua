@@ -19,15 +19,33 @@ function update_settings()
 end
 update_settings()
 
+-- machine.energy is the energy buffer, which only electric machines fill, and it's always 0
+-- for machines without one (burner, heat or fluid powered). Those are counted as running
+-- whenever they're crafting. energy_usage lives on the prototype, not the entity, and reading
+-- an undefined property off an entity is an error rather than nil.
+function is_running(machine)
+    if not machine.is_crafting() then return false end
+    local electric = machine.prototype.electric_energy_source_prototype
+    return electric == nil or machine.energy > 0
+end
+
 function momentum_check(event)
     for _, surface in pairs(game.surfaces) do
         for _, machine in pairs(surface.find_entities_filtered({type = "assembling-machine"})) do
-            if machine.is_crafting() and machine.energy > 0 then
+            if is_running(machine) then
                 change_momentum_modules(machine, 1)
             else
                 change_momentum_modules(machine, -1)
             end
         end -- for entities
+
+        for _, furnace in pairs(surface.find_entities_filtered({type = "furnace"})) do
+            if is_running(furnace) then
+                change_momentum_modules(furnace, 1)
+            else
+                change_momentum_modules(furnace, -1)
+            end
+        end -- for furnaces and recyclers
 
         for _, beacon in pairs(surface.find_entities_filtered({type = "beacon"})) do
             if beacon.energy > 0 then
@@ -221,6 +239,72 @@ end)
 script.on_event(defines.events.on_runtime_mod_setting_changed, function(event)
     if event.setting == "sr-mom-ramping-mode" or event.setting == "sr-mom-ramping-speed" then
         update_settings()
+    end
+end)
+
+-- Warn players when the core is running without any addon that adds modules.
+local addonMods = { "sir-rolins-momentum-turbo", "sir-rolins-momentum-threshold", "sir-rolins-momentum-catalytic" }
+local warningColour = { r = 1, g = 0.8, b = 0.2 }
+
+local function has_addon()
+    for _, name in pairs(addonMods) do
+        if script.active_mods[name] then return true end
+    end
+    return false
+end
+
+-- Printing straight from on_init/on_configuration_changed gets lost (no players yet,
+-- or the game is still loading), so the warning is printed a couple of seconds later.
+local function addon_warning_tick(event)
+    if event.tick < storage.sr_mom_warn_at then return end
+    storage.sr_mom_warn_at = nil
+    script.on_event(defines.events.on_tick, nil)
+    game.print({ "sr-mom-message.no-addons" }, { color = warningColour })
+end
+
+local function schedule_addon_warning()
+    if has_addon() then return end
+    storage.sr_mom_warn_at = game.tick + 120
+    script.on_event(defines.events.on_tick, addon_warning_tick)
+end
+
+-- Factorio doesn't re-apply a technology's unlocks when a mod adds new ones to it,
+-- so recipes added to already researched technologies (e.g. threshold modules added
+-- to speed-module) have to be enabled by hand.
+local function unlock_researched_recipes()
+    for _, force in pairs(game.forces) do
+        for _, tech in pairs(force.technologies) do
+            if tech.researched then
+                for _, effect in pairs(tech.prototype.effects) do
+                    if effect.type == "unlock-recipe" and effect.recipe:find("^sr%-mom%-") then
+                        force.recipes[effect.recipe].enabled = true
+                    end
+                end
+            end
+        end
+    end
+end
+
+script.on_init(function()
+    unlock_researched_recipes()
+    schedule_addon_warning()
+end)
+script.on_configuration_changed(function()
+    unlock_researched_recipes()
+    schedule_addon_warning()
+end)
+script.on_load(function()
+    if storage.sr_mom_warn_at then
+        script.on_event(defines.events.on_tick, addon_warning_tick)
+    end
+end)
+
+-- Players joining a multiplayer game later wouldn't have seen the message above.
+script.on_event(defines.events.on_player_joined_game, function(event)
+    if has_addon() or not game.is_multiplayer() then return end
+    local player = game.get_player(event.player_index)
+    if player then
+        player.print({ "sr-mom-message.no-addons" }, { color = warningColour })
     end
 end)
 

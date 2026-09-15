@@ -1,0 +1,44 @@
+{
+  "item":
+  [
+    ["sr-mom-turbo-1-0", "sr-mom-speed-turbo-1-0"],
+    ["sr-mom-turbo-1-1", "sr-mom-speed-turbo-1-1"],
+    ["sr-mom-turbo-1-2", "sr-mom-speed-turbo-1-2"],
+    ["sr-mom-turbo-1-3", "sr-mom-speed-turbo-1-3"],
+    ["sr-mom-turbo-1-4", "sr-mom-speed-turbo-1-4"],
+    ["sr-mom-turbo-1-5", "sr-mom-speed-turbo-1-5"],
+    ["sr-mom-turbo-1-6", "sr-mom-speed-turbo-1-6"],
+    ["sr-mom-turbo-1-7", "sr-mom-speed-turbo-1-7"],
+    ["sr-mom-turbo-1-8", "sr-mom-speed-turbo-1-8"],
+    ["sr-mom-turbo-1-9", "sr-mom-speed-turbo-1-9"],
+    ["sr-mom-turbo-1-10", "sr-mom-speed-turbo-1-10"],
+    ["sr-mom-turbo-2-0", "sr-mom-speed-turbo-2-0"],
+    ["sr-mom-turbo-2-1", "sr-mom-speed-turbo-2-1"],
+    ["sr-mom-turbo-2-2", "sr-mom-speed-turbo-2-2"],
+    ["sr-mom-turbo-2-3", "sr-mom-speed-turbo-2-3"],
+    ["sr-mom-turbo-2-4", "sr-mom-speed-turbo-2-4"],
+    ["sr-mom-turbo-2-5", "sr-mom-speed-turbo-2-5"],
+    ["sr-mom-turbo-2-6", "sr-mom-speed-turbo-2-6"],
+    ["sr-mom-turbo-2-7", "sr-mom-speed-turbo-2-7"],
+    ["sr-mom-turbo-2-8", "sr-mom-speed-turbo-2-8"],
+    ["sr-mom-turbo-2-9", "sr-mom-speed-turbo-2-9"],
+    ["sr-mom-turbo-2-10", "sr-mom-speed-turbo-2-10"],
+    ["sr-mom-turbo-3-0", "sr-mom-speed-turbo-3-0"],
+    ["sr-mom-turbo-3-1", "sr-mom-speed-turbo-3-1"],
+    ["sr-mom-turbo-3-2", "sr-mom-speed-turbo-3-2"],
+    ["sr-mom-turbo-3-3", "sr-mom-speed-turbo-3-3"],
+    ["sr-mom-turbo-3-4", "sr-mom-speed-turbo-3-4"],
+    ["sr-mom-turbo-3-5", "sr-mom-speed-turbo-3-5"],
+    ["sr-mom-turbo-3-6", "sr-mom-speed-turbo-3-6"],
+    ["sr-mom-turbo-3-7", "sr-mom-speed-turbo-3-7"],
+    ["sr-mom-turbo-3-8", "sr-mom-speed-turbo-3-8"],
+    ["sr-mom-turbo-3-9", "sr-mom-speed-turbo-3-9"],
+    ["sr-mom-turbo-3-10", "sr-mom-speed-turbo-3-10"]
+  ],
+  "recipe":
+  [
+    ["sr-mom-turbo-1-0", "sr-mom-speed-turbo-1-0"],
+    ["sr-mom-turbo-2-0", "sr-mom-speed-turbo-2-0"],
+    ["sr-mom-turbo-3-0", "sr-mom-speed-turbo-3-0"]
+  ]
+}

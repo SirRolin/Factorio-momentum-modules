@@ -1,9 +1,9 @@
 {
   "name": "sir-rolins-momentum-modules",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "title": "Momentum Modules",
   "author": "Sir Rolin",
   "factorio_version": "2.0",
-  "dependencies": ["base >= 2.0", "? space-age", "? quality"],
-  "description": "Adds momentum-based module systems."
+  "dependencies": ["base >= 2.0", "? space-age", "? quality", "? sir-rolins-clean-modules"],
+  "description": "Core momentum system: ramps any sr-mom module up while its machine runs and down while idle. Install Momentum Modules - Turbo and/or Momentum Modules - Threshold for the actual modules."
 }
