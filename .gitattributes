@@ -1,0 +1,10 @@
+# Normalise to LF in the repository, check out as CRLF in the working tree.
+# Factorio handles CRLF fine in Lua, JSON and locale .cfg files.
+* text=auto eol=crlf
+
+# Binary assets - never touch these.
+*.png binary
+*.xcf binary
+*.zip binary
+*.dat binary
+*.ogg binary
